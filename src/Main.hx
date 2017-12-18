@@ -81,8 +81,15 @@ class Main
 	{
 		var out = readDependencies();
 		
-		var rDep = ~/-cp\n/g;
-		out = rDep.replace(out, "-cp ");
+		var rDep = ~/(-?-[a-zA-Z0-9_]+)\n/g;
+		
+		out = rDep.replace(out, "$1 ");
+
+		var result = out.split("\n");
+
+		result.sort( function(a,b) return a < b ? -1 : 1);
+
+		out = result.join("\n");
 		
 		return out;
 	}
@@ -101,6 +108,17 @@ class Main
 		
 		var bytes = p.stdout.readAll();
 		return bytes.getString(0, bytes.length);
+	}
+
+	function getMatches(ereg:EReg, input:String, index:Int = 0):Array<String> 
+	{
+		var matches = [];
+		while (ereg.match(input)) 
+		{
+			matches.push(ereg.matched(index)); 
+			input = ereg.matchedRight();
+		}
+		return matches;
 	}
 
 	
