@@ -81,7 +81,7 @@ class Main
 	{
 		var out = readDependencies();
 		
-		var rDep = ~/-cp\n/;
+		var rDep = ~/-cp\n/g;
 		out = rDep.replace(out, "-cp ");
 		
 		return out;
