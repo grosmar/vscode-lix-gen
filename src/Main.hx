@@ -46,7 +46,7 @@ class Main
 	
 	function showHelp() 
 	{
-		Sys.println("Usage: intellij-lix-gen [arguments]");
+		Sys.println("Usage: vscode-lix-gen [arguments]");
 		Sys.println("--dir <WorkingDirectory>   Directory it should run in. By default, ");
 		Sys.println("                           it will take the current working directiory");
 		Sys.println("--out <outputFile>         Destination htxl file where to save dependencies");
